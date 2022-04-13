@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import HappyBirthday from '../components/HappyBirthday'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -11,9 +12,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Leo & Kos
-        </h1>
+        <div>
+          <h1 className={styles.title}>
+            Leo & Kos
+          </h1>
+        </div>
+        <HappyBirthday />
       </main>
 
       <footer className={styles.footer}>
