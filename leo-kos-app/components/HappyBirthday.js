@@ -33,12 +33,13 @@ const HappyBirthday = () => {
           <ModalHeader>Happy Birthday Mama!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text align='justify' >Welcome to the beginnings of our website. We can't wait to have even more adventures and document them on here with you</Text>
+            <Text align='justify' >Welcome to the beginnings of our website. We cannot wait to have even more adventures and document them on here with you</Text>
             <Center>
               <Image
                 boxSize='300px'
                 src='../LeoKosCrop.png'
                 margin='10px'
+                alt='Leo and Kos having a wee party'
               />
             </Center>
           </ModalBody>
