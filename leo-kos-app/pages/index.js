@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Age from '../components/Age'
 import HappyBirthday from '../components/HappyBirthday'
 import styles from '../styles/Home.module.css'
 
@@ -18,6 +19,9 @@ export default function Home() {
           </h1>
         </div>
         <HappyBirthday />
+        <div>
+          <Age />
+        </div>
       </main>
 
       <footer className={styles.footer}>
