@@ -1,5 +1,5 @@
 """
-WSGI config for leo_kos project.
+WSGI config for LeoKosBackend project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'leo_kos.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LeoKosBackend.settings')
 
 application = get_wsgi_application()
