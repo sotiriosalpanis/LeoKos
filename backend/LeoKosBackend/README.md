@@ -6,5 +6,4 @@ Django with MongoDB
 
 ### Mongo DB
 
-- start mongo server `mongod --dbpath ~/data/db`
--  
+- connect to mongo atlas: `mongosh "mongodb+srv://leo-kos.rw1tg.mongodb.net/leo-kos" --apiVersion 1 --username django_admin`
