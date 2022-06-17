@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
+from dotenv import load_dotenv
 from pathlib import Path
+from pymongo.mongo_client import MongoClient
+
+load_dotenv()
+mongo_db_pw =  os.getenv('MONGODB_PASSWORD')
+mongo_admin = os.getenv('MONGODB_USERNAME')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_&ij9)#s+009iqdxith&w308zq*xke30prpt#f5@8_dhztm7y5'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,11 +83,15 @@ WSGI_APPLICATION = 'LeoKosBackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'leo-kos-db',
-        'HOST': '127.0.0.1',
-        'PORT': 27017,
+        'NAME': 'leo-kos',
+        # 'HOST': f'mongodb+srv://salpanis:{mongo_db_pw}@leo-kos.rw1tg.mongodb.net/',
+        'PORT': 27017, 
+        'USER': mongo_admin,
+        'PASSWORD': mongo_db_pw
     }
 }
+
+MongoClient.HOST = f'mongodb+srv://{mongo_admin}:{mongo_db_pw}@leo-kos.rw1tg.mongodb.net/'
 
 
 # Password validation
@@ -124,3 +134,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'jwt_auth.authentication.JWTAuthentication'
+    # ],
+}
