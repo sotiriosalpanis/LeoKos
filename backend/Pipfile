@@ -8,6 +8,8 @@ fastapi = "*"
 uvicorn = "*"
 pydantic = "*"
 motor = "*"
+python-dotenv = "*"
+pymongo = {extras = ["srv"], version = "*"}
 
 [dev-packages]
 

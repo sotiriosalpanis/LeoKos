@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from core.routers import trips, root
 from core.config import settings
 
-
 def get_application():
     _app = FastAPI(title=settings.PROJECT_NAME)
 
@@ -17,7 +16,7 @@ def get_application():
     )
 
     _app.include_router(trips.router,prefix='/trips')
-    _app.include_router(root.router,prefix='/')
+    _app.include_router(root.router,prefix='')
 
     return _app
 

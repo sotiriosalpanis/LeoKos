@@ -3,13 +3,13 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from typing import List
 
-from app.core.routers.database_client import db
-from app.core.models.database import TripModel
+from core.routers.database_client import db
+from core.models.database import TripModel
 
 
 router = APIRouter()
 
-@router.get('/',response_description='List all trips', response_model= 
+@router.get('',response_description='List all trips', response_model= 
     List[TripModel])
 async def read_trips():
     trips = await db['trips'].find().to_list(1000)
