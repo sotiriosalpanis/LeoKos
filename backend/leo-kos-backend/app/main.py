@@ -1,9 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.core.routers import trips
+from app.core.routers import trips, root
 from app.core.config import settings
-
 
 
 def get_application():
@@ -18,6 +17,7 @@ def get_application():
     )
 
     _app.include_router(trips.router,prefix='/trips')
+    _app.include_router(root.router,prefix='/')
 
     return _app
 
