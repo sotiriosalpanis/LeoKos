@@ -17,9 +17,6 @@ export default function Home() {
           <h1 className={styles.title}>
             Leo & Kos
           </h1>
-        {/* </div>
-        <HappyBirthday />
-        <div> */}
           <Age />
         </div>
       </main>

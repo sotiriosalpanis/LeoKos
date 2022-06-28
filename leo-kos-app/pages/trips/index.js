@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
 
 const tripsURL = `${process.env.DETA_ENDPOINT}trips`
@@ -29,7 +30,13 @@ export default function Trips({trips}) {
           </h1>
           <div>
             {trips.map(trip => (
-              <h3 key={trip._id}>{trip.trip_name}</h3>
+              <Link
+              key={trip._id}
+              href={`/trips/${trip._id}`}
+              >
+                <h3>{trip.trip_name}</h3>
+              </Link>
+             
             ))}
           </div>
       </main>
