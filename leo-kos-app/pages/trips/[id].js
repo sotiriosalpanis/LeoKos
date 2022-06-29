@@ -1,5 +1,3 @@
-
-
 const tripsURL = `${process.env.DETA_ENDPOINT}trips`
 const apiKey = process.env.DETA_API_KEY
 
@@ -46,6 +44,5 @@ export default function TripLanding({ trip }) {
         })}
       </div>
     </div>
-    
   )
 }

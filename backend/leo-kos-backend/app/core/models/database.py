@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Union
 from pydantic import BaseModel, Field
 from bson import ObjectId
 
@@ -19,6 +19,21 @@ class PyObjectID(ObjectId):
     @classmethod
     def __modify_schema__(cls, field_schema):
         field_schema.update(type="string")
+
+# User Models
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(Token):
+    username: Union[str, None] = None
+
+class User(BaseModel):
+    username: str
+    email: Union[str, None] = None
+
+class UserInDB(User):
+    hashed_password: str
 
 # Trip Models
 class Stop(BaseModel):

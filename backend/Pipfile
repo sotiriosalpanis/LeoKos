@@ -10,6 +10,9 @@ pydantic = "*"
 motor = "*"
 python-dotenv = "*"
 pymongo = {extras = ["srv"], version = "*"}
+python-multipart = "*"
+python-jose = {extras = ["cryptography"], version = "*"}
+passlib = {extras = ["bcrypt"], version = "*"}
 
 [dev-packages]
 

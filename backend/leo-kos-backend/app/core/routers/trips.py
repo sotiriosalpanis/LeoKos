@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Body, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+from fastapi.security import OAuth2PasswordBearer
 from typing import List
 
 from core.routers.database_client import db
@@ -8,6 +9,7 @@ from core.models.database import TripModel
 
 
 router = APIRouter()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 @router.get('',response_description='List all trips', response_model= 
     List[TripModel])
