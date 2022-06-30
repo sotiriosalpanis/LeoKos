@@ -29,6 +29,7 @@ def get_password_hash(password):
 #             return True
 #     return False
 
+
 @router.post("/register")
 async def create_user(user: UserSchema = Body(...)):
     hashed_password = get_password_hash(user.password)
@@ -36,14 +37,10 @@ async def create_user(user: UserSchema = Body(...)):
     user = jsonable_encoder(user)
     new_user = await db['users'].insert_one(user)
     created_user = await db['users'].find_one({"_id": new_user.inserted_id})
-    if created_user:
-        return signJWT(user.username)
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-    return credentials_exception
+    # msg = f'Account registered for {created_user.username}'
+    msg = f'Account registered'
+    print(created_user['username'])
+    return JSONResponse(status_code = status.HTTP_201_CREATED, content=msg)
 
 @router.post("/login")
 async def user_login(user: UserLoginSchema = Body(...)):
