@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from core.routers import trips, root
+from core.routers import trips, root, users
 from core.config import settings
 
 def get_application():
@@ -16,6 +16,7 @@ def get_application():
     )
 
     _app.include_router(trips.router,prefix='/trips')
+    _app.include_router(users.router,prefix='/users')
     _app.include_router(root.router,prefix='')
 
     return _app

@@ -28,12 +28,33 @@ class Token(BaseModel):
 class TokenData(Token):
     username: Union[str, None] = None
 
-class User(BaseModel):
-    username: str
-    email: Union[str, None] = None
+class UserSchema(BaseModel):
+    id: PyObjectID = Field(default_factory=PyObjectID, alias="_id")
+    username: str = Field(...)
+    password: str = Field(...)
 
-class UserInDB(User):
-    hashed_password: str
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
+            "example" : {
+                "username" : "LeoKos",
+                "password" : "keepItSecret"
+            }
+        }
+
+class UserLoginSchema(BaseModel):
+    username: str = Field(...)
+    password: str = Field(...)
+
+    class Config:
+        schema_extra = {
+            "example" : {
+                "username" : "LeoKos",
+                "password" : "keepItSecret"
+            }
+        }
 
 # Trip Models
 class Stop(BaseModel):
