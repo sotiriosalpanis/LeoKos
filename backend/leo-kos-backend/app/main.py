@@ -16,8 +16,7 @@ def get_application():
     )
 
     _app.include_router(trips.router,prefix='/trips')
-    _app.include_router(users.router,prefix='/users')
-    _app.include_router(root.router,prefix='')
+    _app.include_router(users.router,prefix='/auth')
 
     return _app
 

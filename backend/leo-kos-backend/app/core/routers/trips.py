@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordBearer
 from typing import List
 
 from core.routers.database_client import db
-from core.models.database import TripModel
+from core.models.trips import TripModel
 
 
 router = APIRouter()
